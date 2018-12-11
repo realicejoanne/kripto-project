@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "183417167584",
+    "firebase_url": "https://kripto-chat-6b8d6.firebaseio.com",
+    "project_id": "kripto-chat-6b8d6",
+    "storage_bucket": "kripto-chat-6b8d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183417167584:android:2f589079d99ac195",
+        "android_client_info": {
+          "package_name": "com.example.kriptoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183417167584-ssr8i87kpr5a1vilq1b8l3237bc53mgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIXGXURT35J1Gmos2lsvslAd6triIwpaA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183417167584:android:271cd365d5b79f87",
+        "android_client_info": {
+          "package_name": "com.example.romansachat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183417167584-ssr8i87kpr5a1vilq1b8l3237bc53mgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIXGXURT35J1Gmos2lsvslAd6triIwpaA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
