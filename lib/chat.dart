@@ -166,11 +166,16 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   void onSendMessage(String content, int type) {
+    
+    String encrypted;
+    
     // do some cryptographic stuff if type == 0
-    autokeyEncrypt(content);
+    if (type == 0) {
+      encrypted = autokeyEncrypt(content);
+    }
 
     // type: 0 = text, 1 = image, 2 = sticker
-    if (content.trim() != '') {
+    if (encrypted.trim() != '') {
       textEditingController.clear();
 
       var documentReference = Firestore.instance
@@ -186,7 +191,7 @@ class ChatScreenState extends State<ChatScreen> {
             'idFrom': id,
             'idTo': peerId,
             'timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
-            'content': content,
+            'content': encrypted,
             'type': type
           },
         );
@@ -206,7 +211,7 @@ class ChatScreenState extends State<ChatScreen> {
               // Text
               ? Container(
                   child: Text(
-                    document['content'],
+                    autokeyDecrypt(document['content']),
                     style: TextStyle(color: primaryColor),
                   ),
                   padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
@@ -301,7 +306,7 @@ class ChatScreenState extends State<ChatScreen> {
                 document['type'] == 0
                     ? Container(
                         child: Text(
-                          document['content'],
+                          autokeyDecrypt(document['content']),
                           style: TextStyle(color: Colors.white),
                         ),
                         padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
