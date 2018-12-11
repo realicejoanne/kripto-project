@@ -2,6 +2,7 @@ final String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 final String key = "P";
 
 String autokeyEncrypt(String plainText) {
+  plainText = plainText.toUpperCase();
   int len = plainText.length;
 
   String subkey = key + plainText;
@@ -21,6 +22,7 @@ String autokeyEncrypt(String plainText) {
 }
 
 String autokeyDecrypt(String cipherText) {
+  cipherText = cipherText.toUpperCase();
   int len = cipherText.length;
 
   String current = key;
