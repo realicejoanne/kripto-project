@@ -6,6 +6,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:romansa_chat/const.dart';
+import 'package:romansa_chat/cryptography.dart';
+import 'package:romansa_chat/encrypt.dart';
+import 'package:romansa_chat/decrypt.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -26,6 +29,30 @@ class Chat extends StatelessWidget {
           style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.enhanced_encryption),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Encrypt(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.no_encryption),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Decrypt(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: new ChatScreen(
         peerId: peerId,
@@ -139,6 +166,9 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   void onSendMessage(String content, int type) {
+    // do some cryptographic stuff if type == 0
+    autokeyEncrypt(content);
+
     // type: 0 = text, 1 = image, 2 = sticker
     if (content.trim() != '') {
       textEditingController.clear();
