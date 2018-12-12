@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:romansa_chat/const.dart';
 import 'package:romansa_chat/cryptography.dart';
+import 'package:flutter/services.dart';
 
 class Encrypt extends StatefulWidget {
   @override
@@ -58,7 +59,15 @@ class _EncryptState extends State<Encrypt> {
                 },
               ),
               Text("CipherText"),
-              Text(_cipherText),
+              GestureDetector(
+                child: Text(_cipherText),
+                onLongPress: () {
+                  Clipboard.setData(new ClipboardData(text: textEditingController.text));
+                  Scaffold.of(context).showSnackBar(
+                    new SnackBar(content: new Text("Copied to Clipboard"),
+                  ));
+                },
+              ),
             ],
           ),
         ),
