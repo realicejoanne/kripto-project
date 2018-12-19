@@ -10,6 +10,7 @@ class Decrypt extends StatefulWidget {
 class _DecryptState extends State<Decrypt> {
   String _plainText = "Ini adalah plainText";
   TextEditingController textEditingController = new TextEditingController();
+  TextEditingController controllerHasil = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class _DecryptState extends State<Decrypt> {
                 ),
                 onPressed: (){
                   setState(() {
-                     _plainText = autokeyDecrypt(textEditingController.text);                
+                     controllerHasil.text = autokeyDecrypt(textEditingController.text);                
                   });
                 },
               ),
@@ -53,12 +54,14 @@ class _DecryptState extends State<Decrypt> {
                 ),
                 onPressed: (){
                   setState(() {
-                     _plainText = columnarDecrypt(textEditingController.text);                
+                     controllerHasil.text = columnarDecrypt(textEditingController.text);                
                   });
                 },
               ),
               Text("PlainText"),
-              Text(_plainText),
+              TextField(
+                controller: controllerHasil,
+              ),
             ],
           ),
         ),
