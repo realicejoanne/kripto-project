@@ -1,7 +1,7 @@
 import 'package:random_string/random_string.dart' as random;
 
 final String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-final String key = "P";
+final String key = "PP";
 final String keyColumnar = "PP";
 
 String autokeyEncrypt(String plainText) {

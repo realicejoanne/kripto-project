@@ -11,6 +11,7 @@ class Encrypt extends StatefulWidget {
 class _EncryptState extends State<Encrypt> {
   String _cipherText = "Ini adalah ciphertext";
   TextEditingController textEditingController = new TextEditingController();
+  TextEditingController controllerHasil = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class _EncryptState extends State<Encrypt> {
                 ),
                 onPressed: (){
                   setState(() {
-                     _cipherText = autokeyEncrypt(textEditingController.text);                
+                     controllerHasil.text = autokeyEncrypt(textEditingController.text);                
                   });
                 },
               ),
@@ -54,19 +55,13 @@ class _EncryptState extends State<Encrypt> {
                 ),
                 onPressed: (){
                   setState(() {
-                     _cipherText = columnarEncrypt(textEditingController.text);                
+                     controllerHasil.text = columnarEncrypt(textEditingController.text);                
                   });
                 },
               ),
               Text("CipherText"),
-              GestureDetector(
-                child: Text(_cipherText),
-                onLongPress: () {
-                  Clipboard.setData(new ClipboardData(text: textEditingController.text));
-                  Scaffold.of(context).showSnackBar(
-                    new SnackBar(content: new Text("Copied to Clipboard"),
-                  ));
-                },
+              TextField(
+                controller: controllerHasil,
               ),
             ],
           ),
